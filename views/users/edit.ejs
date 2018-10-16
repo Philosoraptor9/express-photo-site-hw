@@ -10,5 +10,18 @@
     
 <h1>Edit you a User</h1>
 
+    <section>
+        <form action="/users/<%=user._id%>?_method=PUT" method="post">
+            <input type="text" name="username" value="<%=user.username%>"/><br/>
+            <input type="text" name="password" value="<%=user.password%>"/><br/>
+            <input type="submit" value="Update User"/>
+    </form>
+    </section>
+
+    <section>
+        <form action="/users/<%=users._id%>?_method=DELETE" method="post">
+            <input type="submit" value="Delete User"/>
+        </form>
+    </section>
 </body>
 </html>

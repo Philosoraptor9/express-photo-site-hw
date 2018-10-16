@@ -14,9 +14,9 @@ const userController = require('./controllers/user');
 
 app.use('/users', userController);
 
-app.get('/', (req, res)=>{
-    res.render('users/index.ejs');
-});
+// app.get('/', (req, res)=>{
+//     res.render('users/index.ejs');
+// });
 
 
 const port = 3000;

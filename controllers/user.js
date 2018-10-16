@@ -15,22 +15,6 @@ router.get('/new', (req, res) => {
     res.render('users/new.ejs');
 });
 
-// Show route - shows user's username, edit and delete buttons and all photos (later)
-router.get('/:id', (req, res) =>{
-    User.findById(req.params.id, (err, foundUser) => {
-        console.log(foundUser);
-        res.render('users/show.ejs', {user: foundUser});
-    })
-});
-
-// Update and delete - edit button should take you to 'edit' form, delete button should delete user
-router.get('/:id/edit', (req, res) =>{
-    User.findById(req.params.id, (err, foundUser) => {
-        console.log(foundUser);
-        res.render('users/edit.ejs');
-    })
-});
-
 router.post('/', (req, res) => {
     console.log(`req.body is ${JSON.stringify(req.body)}`);
     User.create(req.body, (err, newUser) =>{
@@ -40,6 +24,22 @@ router.post('/', (req, res) => {
         } else {
             res.redirect('/users')
         }
+    })
+});
+
+// Show route - shows user's username, edit and delete buttons and all photos (later)
+router.get('/:id', (req, res) =>{
+    User.findById(req.params.id, (err, foundUsers) => {
+        console.log(foundUsers);
+        res.render('users/show.ejs', {users: foundUsers});
+    })
+});
+
+// Update and delete - edit button should take you to 'edit' form, delete button should delete user
+router.get('/:id/edit', (req, res) =>{
+    User.findById(req.params.id, (err, foundUser) => {
+        console.log(foundUser);
+        res.render('users/edit.ejs', {user: foundUser});
     })
 });
 
