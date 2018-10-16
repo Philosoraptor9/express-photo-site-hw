@@ -12,15 +12,15 @@ app.use(bodyParser({urlencoded: true, extended: false}));
 
 const userController = require('./controllers/user');
 
-// app.use('/users', userController);
+app.use('/users', userController);
 
 app.get('/', (req, res)=>{
     res.render('users/index.ejs');
-})
+});
 
 
 const port = 3000;
 
 app.listen(port, ()=>{
     console.log(`Up and running on ${port}`);
-})
+});
