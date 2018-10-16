@@ -9,6 +9,13 @@
 <body>
     
 <h1>Welcome Users</h1>
+    <ul>
+    <% for (let i = 0; i < users.length; i++) { %>
+        <li>
+            <a href="/user/<%=users[i]._id%>"><%= users[i].name %></a>
+        </li>
+   <% } %>
+</ul>
 
 </body>
 </html>
