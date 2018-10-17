@@ -14,9 +14,9 @@
         </li>
     </ul>
     <ul>
-    <% for (let i = 0; i < users.length; i++) { %>
+    <% for (let i = 0; i < users.length; i++) { console.log(users)%>
         <li>
-            <a href="/users/<%=users[i]._id%>"><%= users[i].name %></a>
+            <a href="/users/<%=users[i]._id%>"><%= users[i].username %></a>
         </li>
    <% } %>
 </ul>

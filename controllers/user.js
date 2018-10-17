@@ -29,9 +29,10 @@ router.post('/', (req, res) => {
 
 // Show route - shows user's username, edit and delete buttons and all photos (later)
 router.get('/:id', (req, res) =>{
-    User.findById(req.params.id, (err, foundUsers) => {
-        console.log(foundUsers);
-        res.render('users/show.ejs', {users: foundUsers});
+    User.findById(req.params.id, (err, foundUser) => {
+        console.log(req.params.id);
+        console.log(foundUser);
+        res.render('users/show.ejs', {user: foundUser});
     })
 });
 

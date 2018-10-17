@@ -14,12 +14,15 @@
           <a href="/users">Users</a>
         </li>
     </ul>
-        <section>
-            <a href="/users/<%=users._id%>">Edit</a>
-        </section>
+        
+        <div>    
+            <section>
+                <a href="/users/<%=user.username_id%>">Edit User</a>
+            </section>
+        </div>
 
         <section>
-            <form action="/users/<%=users._id%>?_method=DELETE" method="post">
+            <form action="/users/<%=user._id%>?_method=DELETE" method="post">
                 <input type="submit" value="Delete User"/>
             </form>
         </section>
