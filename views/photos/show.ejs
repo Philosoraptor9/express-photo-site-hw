@@ -15,7 +15,7 @@
     <ul>
 
         <li>
-            <a href="/photos">photos Index</a>
+            <a href="/photos">Photos Index</a>
         </li>
 
     </ul>
@@ -23,7 +23,7 @@
 </header>
 <main>
     <h1><%=photo.title%></h1>
-    <p>photographer: <a href="/users/<%=user.id%>"><%=user.username%></a></p>
+    <p>photographer: <a href="/users/<%=user._id%>"><%=user.username%></a></p>
         <section>
             <%=photo.body%>
         </section>

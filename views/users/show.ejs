@@ -9,14 +9,28 @@
 <body>
     
 <p> <a href="/">Home</a> </p>
+ <p> <a href="/users">Users</a> </p>
 
-<h1>Here's the user <%= user.name %> </h1>
-    <ul>
-        <li>
-          <a href="/users">Users</a>
-        </li>
-    </ul>
-        
+<h1>Here's the user <%= user.username %> </h1>
+
+<h2>Here's <%= user.username %>'s photos</h2>
+
+        <div>    
+            <section>
+                <% for (let i = 0; i < user.photos.length; i++) { %>
+
+                <a href="/photos/<%=user.photos[i].id%>"><%= user.photos[i].title %> </a>
+
+               <% } %>
+            </section>
+        </div>
+
+        <div>
+            <section>
+                <a href="/photos/new">Add Photo</a>
+            </section>
+        </div>
+
         <div>    
             <section>
                 <a href="/users/<%=user.username_id%>">Edit User</a>

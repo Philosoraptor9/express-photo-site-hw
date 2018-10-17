@@ -7,7 +7,6 @@ const User = require('../models/user');
 // Index route - should show all photos that have been submitted
 router.get('/', (req, res) => {
     Photo.find({}, (err, foundPhotos) => {
-    console.log(foundPhotos);
     res.render('photos/index.ejs', {photos: foundPhotos});
     })
 });
@@ -24,7 +23,6 @@ router.get('/new', (req, res) => {
 router.get('/:id', (req, res) =>{
     Photo.findById(req.params.id, (err, foundPhoto) => {
         User.findOne({'photos._id': req.params.id}, (err, foundUser) => {
-        console.log(foundUser);
         res.render('photos/show.ejs', {photo: foundPhoto, user: foundUser});
         })
     })
@@ -34,17 +32,23 @@ router.get('/:id', (req, res) =>{
 router.get('/:id/edit', (req, res) =>{
     Photo.findById(req.params.id, (err, foundPhoto) => {
         console.log(foundPhoto);
-        res.render('photos/edit.ejs', {photo: foundPhoto});
+        User.find({}, (err, allUsers) =>{
+            User.findOne({'photos._id': req.params.id}, (err, foundPhotoUser) => {
+                res.render('photos/edit.ejs', {photo: foundPhoto, users: allUsers, photoUser: foundPhotoUser});
+            })
+        })
     })
 });
 
 router.post('/', (req, res) => {
     User.findById(req.body.userId, (err, foundUser) =>{
         console.log(`req.body is ${JSON.stringify(req.body)}`);
-        Photo.create(req.body, (err, newPhoto) =>{
-        foundUser.photos.push(newPhoto);
-        foundUser.save((err, data) => {
-            res.redirect('/photos')
+        console.log(foundUser);
+            Photo.create(req.body, (err, newPhoto) =>{
+            foundUser.photos.push(newPhoto);
+                console.log(newPhoto);
+                foundUser.save((err, data) => {
+                    res.redirect('/photos')
             })
         })
     })

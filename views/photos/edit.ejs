@@ -27,17 +27,17 @@
     <select name="userId">
         <%for (let i = 0; i < users.length; i++) {%>
         <option value="<%=users[i].id%>"
-            <% if(users[i]._id.toString() === photouser._id.toString()){ %>
+            <% if(users[i]._id.toString() === foundPhotoUser._id.toString()){ %>
                 selected
             <% } %>
-        ><%=users[i].username%></option>
+        <%=users[i].username%></option>
         <%}%>
     </select>
     <br>
 
     <input type="text" name="title" value="<%=photo.title%>"/><br/>
 
-    <input type="text" name="title" value ="<%=photo.body%>"/> <br/>
+    <input type="text" name="image" value ="<%=photo.body%>"/> <br/>
 
     <input type="submit" value="Update photo"/>
 
