@@ -1,5 +1,6 @@
 const express = require('express');
 const User = require('../models/user');
+const Photo = require('../models/photo');
 const router = express.Router();
 
 // Index route - shows all usernames
@@ -30,7 +31,6 @@ router.post('/', (req, res) => {
 // Show route - shows user's username, edit and delete buttons and all photos (later)
 router.get('/:id', (req, res) =>{
     User.findById(req.params.id, (err, foundUser) => {
-        console.log(req.params.id);
         console.log(foundUser);
         res.render('users/show.ejs', {user: foundUser});
     })
