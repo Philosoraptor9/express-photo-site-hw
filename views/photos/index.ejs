@@ -8,7 +8,32 @@
 </head>
 <body>
     
-    <h1>Welcome to the photos</h1>
+<header>
+
+    <h1>All the Photos</h1>
+    <nav>
+        <ul>
+        <li>
+            <a href="/">Home</a>
+        </li>
+        <li>
+            <a href="/photos/new">Post a new photo</a>
+        </li>
+        </ul>
+    </nav>
+
+</header>
+
+    <main>
+        <h2>List of photos</h2>
+        <ul>
+        <% for(let i = 0; i < photos.length; i++){ %>
+            <li>
+            <a href="/photos/<%=photos[i]._id%>"><%=photos[i].title%></a>
+            </li>
+        <% } %>
+        </ul>
+    </main>
 
 </body>
 </html>

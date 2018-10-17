@@ -8,7 +8,36 @@
 </head>
 <body>
     
-    <h1>Here's the photo</h1>
+<header>
+    <nav>
+    <ul>
+
+        <li>
+            <a href="/">Home</a>
+        </li>
+
+        <li>
+            <a href="/photos">photos Index</a>
+        </li>
+
+    </ul>
+    </nav>
+</header>
+<main>
+    <h1><%=photo.title%></h1>
+    <p>photographer: <a href="/users/<%=user.id%>"><%=user.name%></a></p>
+        <section>
+            <%=photo.body%>
+        </section>
+        <section>
+            <a href="/photos/<%=photo.id%>/edit">Edit</a>
+        </section>
+        <section>
+            <form action="/photos/<%=photo._id%>?_method=DELETE" method="post">
+                <input type="submit" value="Delete photo"/>
+            </form>
+        </section>
+</main>
 
 </body>
 </html>

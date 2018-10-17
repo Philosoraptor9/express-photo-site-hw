@@ -12,9 +12,12 @@ router.get('/', (req, res) => {
     })
 });
 
-// New route - enter photoname (required); url of site hosting photo; info ab photo supplied by photo (not required)
+// New route - enter username (required); url of site hosting photo; info ab photo supplied by photo (not required)
 router.get('/new', (req, res) => {
-    res.render('photos/new.ejs');
+    User.find({}, (err, allUsers)=> {
+        res.render('photos/new.ejs', {users: allUsers});
+    })
+    
 });
 
 router.post('/', (req, res) => {
