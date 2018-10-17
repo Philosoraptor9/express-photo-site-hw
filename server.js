@@ -11,8 +11,10 @@ app.use(methodOverride('_method'));
 app.use(bodyParser({urlencoded: true, extended: false}));
 
 const userController = require('./controllers/user');
+const photoController = require('./controllers/photo');
 
 app.use('/users', userController);
+app.use('/photos', photoController);
 
 // app.get('/', (req, res)=>{
 //     res.render('users/index.ejs');

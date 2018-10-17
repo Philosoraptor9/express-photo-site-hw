@@ -1,7 +1,8 @@
 const express = require('express');
+const router = express.Router()
 const Photo = require('../models/photo');
 const User = require('../models/user');
-const router = express.Router()
+
 
 // Index route - should show all photos that have been submitted
 router.get('/', (req, res) => {
