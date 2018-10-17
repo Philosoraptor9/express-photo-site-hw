@@ -8,7 +8,41 @@
 </head>
 <body>
     
-    <h1>Edit you a photo</h1>
+<header>
+    <h1>Edit <%=photo.title%>'s Info</h1>
+    <nav>
+    <ul>
+        <li>
+        <a href="/">Home</a>
+        </li>
+        <li>
+        <a href="/photos">Photos Index</a>
+        </li>
+    </ul>
+    </nav>
+</header>
+<main>
+    <h2>Photo Attributes:</h2>
+    <form action="/photos/<%=photo._id%>?_method=PUT" method="POST">
+
+    <select name="userId">
+        <%for (let i = 0; i < users.length; i++) {%>
+        <option value="<%=users[i].id%>"
+            <% if(users[i]._id.toString() === photouser._id.toString()){ %>
+                selected
+            <% } %>
+        ><%=users[i].name%></option>
+        <%}%>
+    </select>
+    <br>
+
+    <input type="text" name="title" value="<%=photo.title%>"/><br/>
+
+    <input type="text" name="title" value ="<%=photo.body%>"/> <br/>
+
+    <input type="submit" value="Update photo"/>
+    </form>
+</main>
 
 </body>
 </html>

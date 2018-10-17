@@ -1,5 +1,5 @@
 const express = require('express');
-const router = express.Router()
+const router = express.Router();
 const Photo = require('../models/photo');
 const User = require('../models/user');
 
@@ -17,7 +17,6 @@ router.get('/new', (req, res) => {
     User.find({}, (err, allUsers)=> {
         res.render('photos/new.ejs', {users: allUsers});
     })
-    
 });
 
 router.post('/', (req, res) => {
@@ -48,6 +47,7 @@ router.get('/:id/edit', (req, res) =>{
     })
 });
 
+// Delete should delete a specific photo from it's user
 router.delete('/:id', (req, res)=>{
     Photo.findByIdAndDelete(req.params.id, (err, result)=>{
         res.redirect('/photos')
