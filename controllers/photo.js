@@ -19,23 +19,14 @@ router.get('/new', (req, res) => {
     })
 });
 
-router.post('/', (req, res) => {
-    console.log(`req.body is ${JSON.stringify(req.body)}`);
-    Photo.create(req.body, (err, newPhoto) =>{
-        console.log(newPhoto);
-        if (err) {
-            console.log(err)
-        } else {
-            res.redirect('/photos')
-        }
-    })
-});
 
 // Show route - shows and individual photo, edit or delete a photo
 router.get('/:id', (req, res) =>{
     Photo.findById(req.params.id, (err, foundPhoto) => {
-        console.log(foundPhoto);
-        res.render('photos/show.ejs', {photo: foundPhoto});
+        User.findOne({'photos._id': req.params.id}, (err, foundUser) => {
+        console.log(foundUser);
+        res.render('photos/show.ejs', {photo: foundPhoto, user: foundUser});
+        })
     })
 });
 
@@ -44,6 +35,18 @@ router.get('/:id/edit', (req, res) =>{
     Photo.findById(req.params.id, (err, foundPhoto) => {
         console.log(foundPhoto);
         res.render('photos/edit.ejs', {photo: foundPhoto});
+    })
+});
+
+router.post('/', (req, res) => {
+    User.findById(req.body.userId, (err, foundUser) =>{
+        console.log(`req.body is ${JSON.stringify(req.body)}`);
+        Photo.create(req.body, (err, newPhoto) =>{
+        foundUser.photos.push(newPhoto);
+        foundUser.save((err, data) => {
+            res.redirect('/photos')
+            })
+        })
     })
 });
 

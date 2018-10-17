@@ -8,13 +8,12 @@
 </head>
 <body>
     
+    <p> <a href="/">Home</a> </p>
+
 <header>
     <h1>Edit <%=photo.title%>'s Info</h1>
     <nav>
     <ul>
-        <li>
-        <a href="/">Home</a>
-        </li>
         <li>
         <a href="/photos">Photos Index</a>
         </li>
@@ -31,7 +30,7 @@
             <% if(users[i]._id.toString() === photouser._id.toString()){ %>
                 selected
             <% } %>
-        ><%=users[i].name%></option>
+        ><%=users[i].username%></option>
         <%}%>
     </select>
     <br>
@@ -41,6 +40,7 @@
     <input type="text" name="title" value ="<%=photo.body%>"/> <br/>
 
     <input type="submit" value="Update photo"/>
+
     </form>
 </main>
 
